@@ -1,0 +1,31 @@
+name: Verify public pilot resources
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Check public pages without credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://tonghuajian.dianweilian.workers.dev
+          check() {
+            url="$1"
+            expected="$2"
+            code=$(curl --retry 2 --connect-timeout 5 --max-time 12 -sSL -o /tmp/response -w '%{http_code}' "$url")
+            echo "$code $url"
+            test "$code" = 200
+            grep -Fqi "$expected" /tmp/response
+          }
+          check "$base/" '同话间'
+          check "$base/selection.html" '采购前的五个问题'
+          check "$base/pilot.html" '跨端试点验收单'
+          check "$base/pilot.md" '本次记录'
+          check "$base/sitemap.xml" 'selection.html'
+          check "$base/robots.txt" 'Sitemap:'
+          check 'https://github.com/nio-coder/tonghuajian/releases/tag/v1.0.0' '同话间'
+          check 'https://github.com/nio-coder/tonghuajian/releases/download/v1.0.0/pilot.md' '本次记录'
