@@ -1,0 +1,24 @@
+name: 试点评估
+description: 告诉我们你要评估的场景和终端，以便在此公开交流。
+title: "[试点评估] "
+body:
+  - type: markdown
+    attributes:
+      value: 本表提交后公开显示。请仅填写可公开的需求，无需姓名、电话、账号或客户资料。
+  - type: dropdown
+    id: scenario
+    attributes:
+      label: 评估场景
+      options:
+        - 自有品牌聊天应用
+        - 企业跨端群聊
+        - 与现有系统对比选型
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: 哪个终端组合和工作流程需要验证？
+      placeholder: 例如，现场同事用 Android，办公室同事用浏览器，需要试验离线后的消息补收。
+    validations:
+      required: true
