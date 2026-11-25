@@ -8,3 +8,7 @@
 - [提交公开的试点评估需求](https://github.com/nio-coder/tonghuajian/issues/new?template=pilot.yml)
 
 同话间面向希望评估自有品牌通讯应用的团队。产品工程涵盖 Android、iOS 和 Web。本仓库由同话间维护，提供公开的选型资料。
+
+## 从一张图标到五档 Android 资源
+
+查看[同话间品牌图标的实际生成结果](examples/README.md)，下载资源并核对尺寸和 SHA-256 摘要。[品牌官网](https://tonghuajian.dianweilian.workers.dev/?utm_source=github&utm_medium=readme&utm_campaign=pilot_v1)
